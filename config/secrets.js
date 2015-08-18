@@ -19,9 +19,19 @@
  * IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT
  */
 
-module.exports = {
-
-  db: process.env.MONGODB || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/test',
+//fixup to retrieve MongDb creds from Bluemix if configured 
+var getBluemixDbUri = function() { 
+ var dbUri = ""; 
+ if (process.env.VCAP_SERVICES) { 
+ var env = JSON.parse(process.env.VCAP_SERVICES); 
+ var mongoVersion = 'mongolab'; 
+ if (env[mongoVersion]) { 
+ dbUri = env[mongoVersion][0].credentials.uri;  
+ } 
+ } 
+ if (dbUri === "") return null; 
+ else return dbUri; 
+};
 
   sessionSecret: process.env.SESSION_SECRET || 'Your Session Secret goes here',
 
