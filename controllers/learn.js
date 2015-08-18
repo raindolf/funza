@@ -1,3 +1,10 @@
+exports.learn = function(req, res) {
+  res.render('Learn/index', {
+    title: 'Learn'
+  });
+};
+
+
 extends layout
 
 block content
