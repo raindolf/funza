@@ -1,9 +1,8 @@
-exports.learn = function(req, res) {
-  res.render('Learn/index', {
+exports.getLearn = function(req, res) {
+  res.render('Learn', {
     title: 'Learn'
   });
 };
-
 
 extends layout
 
