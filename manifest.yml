@@ -1,9 +1,9 @@
 applications: 
 - services: 
   - MongoLab-rq
-  host: funza
+  host: kfunza
   disk: 1024M 
-  name: funza
+  name: kfunza
   command: node app.js 
   path: . 
   domain: mybluemix.net 
