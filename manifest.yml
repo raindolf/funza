@@ -1,6 +1,6 @@
 applications: 
 - services: 
-  - funzadb
+  - Kujifunzadb
   host: kfunza
   disk: 1024M 
   name: kfunza
