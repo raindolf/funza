@@ -15,23 +15,26 @@
  * Another added benefit of this approach is that you can use two different
  * sets of keys for local development and production mode without making any
  * changes to the code.
-
  * IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT
  */
 
-//fixup to retrieve MongDb creds from Bluemix if configured 
+ //fixup to retrieve MongDb creds from Bluemix if configured 
 var getBluemixDbUri = function() { 
  var dbUri = ""; 
  if (process.env.VCAP_SERVICES) { 
- var env = JSON.parse(process.env.VCAP_SERVICES); 
- var mongoVersion = 'mongolab'; 
- if (env[mongoVersion]) { 
+  var env = JSON.parse(process.env.VCAP_SERVICES); 
+  var mongoVersion = 'mongolab'; 
+  if (env[mongoVersion]) { 
  dbUri = env[mongoVersion][0].credentials.uri;  
  } 
  } 
  if (dbUri === "") return null; 
  else return dbUri; 
 };
+
+module.exports = {
+
+  db: process.env.MONGODB || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/test',
 
   sessionSecret: process.env.SESSION_SECRET || 'Your Session Secret goes here',
 
